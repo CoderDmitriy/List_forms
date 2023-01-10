@@ -18,3 +18,7 @@ docker-compose build --no-cache
 docker-compose up -d
 ~~~
 Для проверки работоспособности запустить script_requests.py   
+
+Если возникает ошибка permission denied": unknown при docker-compose up -d
+нужно использовать команду chmod +x ./entrypoint.sh
+и после пересобрать контейнер сначала.
