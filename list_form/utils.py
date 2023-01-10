@@ -42,16 +42,17 @@ class Valid_form:
                 return 'email'
             return 'text'
 
-    def find_forms(db, request):
-        result = []
-        if len(request) == 0:
-            pass
-        else:
-            for count_field_in_find in range(1, len(request)+1):
-                iter_find = combinations(request.items(), count_field_in_find)
-                iter_find = list(map(lambda x: dict(x), iter_find))
-                for comb in iter_find:
-                    list_form = db.find(comb, {'_id': 0})
-                    result += list((filter(lambda x: len(x) ==
-                                   count_field_in_find+1, list_form)))
-                return result
+
+def find_forms(db, request):
+    result = []
+    if len(request) == 0:
+        pass
+    else:
+        for count_field_in_find in range(1, len(request)+1):
+            iter_find = combinations(request.items(), count_field_in_find)
+            iter_find = list(map(lambda x: dict(x), iter_find))
+            for comb in iter_find:
+                list_form = db.find(comb, {'_id': 0})
+                result += list((filter(lambda x: len(x) ==
+                               count_field_in_find+1, list_form)))
+            return result
